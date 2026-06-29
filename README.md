@@ -14,7 +14,7 @@
 | **TTS 语音** | 火山引擎（甜美桃子音色） | OGG Opus 格式，6-8KB/条 |
 | **识图** | MiniMax-M3 (opencode-go) | Telegram 图片自动识别 |
 | **主动冒泡** | 动态间隔 cron | 基于依恋度/亲密感计算 |
-| **人格引擎** | CyberPersona (plastic-labs) | 五维人格 + 游戏化成长 |
+| **人格引擎** | [CyberPersona](https://github.com/LRsir/CyberPersona) (fork) | 五维人格 + 游戏化成长 |
 | **性格初始化** | 随机大五人格 | 每次 init 不同性格原型 |
 
 ### 特色
@@ -39,11 +39,11 @@
 ### 安装
 
 ```bash
-# 1. 创建 profile
-hermes profile create cybergf
+# 1. 克隆本仓库到 profile 目录
+git clone https://github.com/LRsir/cyber-gf.git ~/.hermes/profiles/cybergf
 
-# 2. 复制项目文件到 profile 目录
-cp -r * ~/.hermes/profiles/cybergf/
+# 2. 克隆人格引擎（CyberPersona fork）
+git clone git@github.com:LRsir/CyberPersona.git ~/.hermes/profiles/cybergf/CyberPersona
 
 # 3. 配置 .env
 cd ~/.hermes/profiles/cybergf
@@ -93,7 +93,7 @@ VOLC_APP_ID=xxx
 ├── cron/
 │   └── jobs.json         # 定时调度配置
 │
-├── CyberPersona/         # 人格引擎（submodule）
+├── CyberPersona/         # 人格引擎（见 LRsir/CyberPersona）
 ├── skills/               # Hermes 技能插件
 └── image_cache/          # 图片缓存（gitignored）
 ```
@@ -187,3 +187,14 @@ check_quiet.py（检测最近30分钟是否有对话）
 ## License
 
 MIT
+
+---
+
+## 项目说明
+
+本项目由两个 GitHub 仓库组成：
+
+| Repo | 说明 |
+|------|------|
+| [LRsir/cyber-gf](https://github.com/LRsir/cyber-gf) | 本仓库——Hermes 配置、SOUL 人格、脚本、skills |
+| [LRsir/CyberPersona](https://github.com/LRsir/CyberPersona) | 原 [harrylarryxyz/CyberPersona](https://github.com/harrylarryxyz/CyberPersona) 的 fork，仅将路径适配为 cybergf profile
