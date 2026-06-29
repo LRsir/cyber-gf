@@ -1,0 +1,61 @@
+# Runtime state
+state.db
+state.db-shm
+state.db-wal
+sessions/
+gateway.pid
+gateway.lock
+gateway_state.json
+channel_directory.json
+
+# Logs
+logs/
+
+# Cron output
+cron/output/
+cron/.jobs.lock
+cron/.tick.lock
+
+# API keys & secrets
+.env
+skills/image-api/.env
+auth.json
+auth.lock
+*.lock
+
+# Caches
+image_cache/
+audio_cache/
+cache/
+home/
+models_dev_cache.json
+skills/.usage.json
+skills/.usage.json.lock
+skills/.curator_state
+skills/.hub/
+
+# Generated media
+volc_out.mp3
+volc_out.ogg
+
+# Python
+__pycache__/
+*.pyc
+bin/
+
+# Plan/sandbox temp files
+plans/
+sandboxes/
+workspace/
+
+# Node
+node_modules/
+package-lock.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# External git repos (tracked separately)
+CyberPersona/
+skills/image-api/
