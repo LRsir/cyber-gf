@@ -192,9 +192,47 @@ MIT
 
 ## 项目说明
 
-本项目由两个 GitHub 仓库组成：
+⚠️ **重要：本项目依赖两个独立的 GitHub 仓库，clone 时必须两个都拉！**
 
-| Repo | 说明 |
-|------|------|
-| [LRsir/cyber-gf](https://github.com/LRsir/cyber-gf) | 本仓库——Hermes 配置、SOUL 人格、脚本、skills |
-| [LRsir/CyberPersona](https://github.com/LRsir/CyberPersona) | 原 [harrylarryxyz/CyberPersona](https://github.com/harrylarryxyz/CyberPersona) 的 fork，仅将路径适配为 cybergf profile
+### 仓库结构
+
+| Repo | 说明 | 必须 clone？ |
+|------|------|:---:|
+| [LRsir/cyber-gf](https://github.com/LRsir/cyber-gf) | **本仓库** —— Hermes 配置、SOUL 人格、脚本、skills | ✅ |
+| [LRsir/CyberPersona](https://github.com/LRsir/CyberPersona) | **[原项目](https://github.com/harrylarryxyz/CyberPersona) 的 fork** —— 人格引擎（20种性格原型） | ✅ |
+
+### 安装完整步骤
+
+```bash
+# 1. 克隆主项目
+git clone https://github.com/LRsir/cyber-gf.git ~/.hermes/profiles/cybergf
+
+# 2. 克隆人格引擎（fork，必须）
+git clone git@github.com:LRsir/CyberPersona.git ~/.hermes/profiles/cybergf/CyberPersona
+
+# 3. 配置 .env
+cd ~/.hermes/profiles/cybergf
+cp .env.example .env
+# 编辑 .env 填入 API Keys
+
+# 4. 启动
+hermes -p cybergf gateway run
+```
+
+### CyberPersona fork 与原版的差异
+
+与 `harrylarryxyz/CyberPersona` 相比，只改了 `SKILL.md` 中的 3 行路径：
+- `~/.hermes/CyberPersona-hermes` → `~/.hermes/profiles/cybergf/CyberPersona`
+
+所有代码、人格原型、外貌/声音池、游戏化逻辑均未改动。
+
+### 同步原项目更新
+
+```bash
+cd ~/.hermes/profiles/cybergf/CyberPersona
+git remote add upstream https://github.com/harrylarryxyz/CyberPersona.git
+git fetch upstream
+git merge upstream/main
+# 如有冲突，通常只有 SKILL.md 路径需要重新适配
+git push lr main
+```
